@@ -3,6 +3,8 @@ const app = express();
 
 const redisClient = require('./redis-client');
 
+app.use(express.static('public'));
+
 app.get('/:key', async (req, res) => {
   const { key } = req.params;
   const rawData = await redisClient.getAsync(key);
